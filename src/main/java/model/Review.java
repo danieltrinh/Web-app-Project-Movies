@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 public class Review {
     private Integer id;

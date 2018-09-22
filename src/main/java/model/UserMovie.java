@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 public class UserMovie {
   private Integer UserId;
