@@ -35,6 +35,7 @@ public class loginController extends HttpServlet {
                 resp.addCookie(cookie);
             }
             session.setAttribute("user", user);
+            session.setAttribute("userId", userDb.getUser(user).getId());
             String urlToRedirect = "dashboard.jsp";
             resp.getWriter().write(urlToRedirect);
             //resp.sendRedirect("dashboard.jsp");
