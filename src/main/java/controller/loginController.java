@@ -33,7 +33,7 @@ public class loginController extends HttpServlet {
             }
             session.setAttribute("user", user);
             session.setAttribute("userId", userDb.getUser(user).getId());
-            session.setAttribute("personalList", userDb.getUser(user).getPersonalList());
+            session.setAttribute("watchListIds", userDb.getUser(user).getWatchListIds());
             String urlToRedirect = "dashboard";
             resp.getWriter().write(urlToRedirect);
         } else {

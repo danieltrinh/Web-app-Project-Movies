@@ -12,7 +12,7 @@ public class User {
     private String fullname;
     private String telephone;
     private String address;
-    private List<UserMovie> personalList;
+    private List<Integer> watchListIds;
 
     public User() {
 
@@ -33,15 +33,16 @@ public class User {
         this.address = address;
     }
 
-    public User(int id, String email, String password, String fullname, String telephone, String address, List<UserMovie> personalList) {
+    public User(int id, String email, String password, String fullname, String telephone, String address, List<Integer> watchListIds) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.fullname = fullname;
         this.telephone = telephone;
         this.address = address;
-        this.personalList = personalList;
+        this.watchListIds = watchListIds;
     }
+
 
     public String getPassword() {
         return password;
@@ -91,32 +92,11 @@ public class User {
         this.id = id;
     }
 
-    public List<UserMovie> getPersonalList() {
-        return personalList;
+    public List<Integer> getWatchListIds() {
+        return watchListIds;
     }
 
-    public void setPersonalList(List<UserMovie> personalList) {
-        this.personalList = personalList;
+    public void setWatchListIds(List<Integer> watchListIds) {
+        this.watchListIds = watchListIds;
     }
-
-    public static List<UserMovie> getWillWatchList(List<UserMovie> personalList)
-    {
-        List<UserMovie> result = new ArrayList<>();
-        for(UserMovie um : personalList)
-            if(um.getStatus() == UserMovie.WILL_WATCH)
-                result.add(um);
-        return result;
-    }
-
-    public static List<UserMovie> getWatchedList(List<UserMovie> personalList)
-    {
-        List<UserMovie> result = new ArrayList<>();
-        for(UserMovie um : personalList)
-            if(um.getStatus() == UserMovie.WATCHED)
-                result.add(um);
-        return result;
-    }
-
-
-
 }

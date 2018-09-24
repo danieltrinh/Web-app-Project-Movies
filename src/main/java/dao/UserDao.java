@@ -10,16 +10,12 @@ public class UserDao {
     private Map<String, User> usersDB = new HashMap<>();
 
     {
-        List<UserMovie> sonList = Arrays.asList(
-                new UserMovie(58776, 0),
-                new UserMovie(270691, 1),
-                new UserMovie(10304, 1),
-                new UserMovie(57286, 1)
+        List<Integer> sonList = Arrays.asList(
+                348350,270691,10304,57286
         );
-        List<UserMovie> yafeiList = Arrays.asList(
-                new UserMovie(180358, 0),
-                new UserMovie(14843, 1),
-                new UserMovie(37607, 1)
+
+        List<Integer> yafeiList = Arrays.asList(
+                180358,14843,37607
         );
 
         usersDB.put("son@mum.edu", new User(1, "son@mum.edu", "123456", "", "", "", sonList));

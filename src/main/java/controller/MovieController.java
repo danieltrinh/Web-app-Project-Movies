@@ -10,6 +10,7 @@ import model.FromAPI.Movie;
 import model.FromAPI.Similar;
 import model.Review;
 import model.ReviewReturn;
+import model.UserMovie;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,6 +56,14 @@ public class MovieController extends HttpServlet {
                 returnList.add(value);
             }
         }
+
+        List<Integer> watchListIds = (List<Integer>) session.getAttribute("watchListIds");
+
+        if(watchListIds != null)
+            if(watchListIds.contains(Integer.parseInt(id)))
+            {
+                req.setAttribute("watchList", 1);
+            }
 
         req.setAttribute("listReview", returnList);
         req.setAttribute("movie", movie);

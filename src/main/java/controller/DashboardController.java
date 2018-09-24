@@ -18,11 +18,8 @@ public class DashboardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        List<UserMovie> movieList = (List<UserMovie>) session.getAttribute("personalList");
-        System.out.println(User.getWatchedList(movieList));
-        System.out.println(User.getWillWatchList(movieList));
-        req.setAttribute("watchedList", User.getWatchedList(movieList));
-        req.setAttribute("willWatchList", User.getWillWatchList(movieList));
+        List<Integer> watchListIds = (List<Integer>) session.getAttribute("watchListIds");
+        req.setAttribute("watchListIds",watchListIds);
         req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
     }
 }
