@@ -94,3 +94,38 @@ body > .container
 {
     width: 100%;
 }
+
+#searchBar{
+    text-align: right;
+    margin-bottom: 5px;
+
+}
+
+#searchButton{
+    width: 100px;
+    height: 50px;
+    font-size: 28px;
+    font-family: cursive;
+    border-radius: 20px;
+    background-color: darkorange;
+}
+
+#movieInput{
+    width: 250px;
+    height: 50px;
+    font-size: 30px;
+    font-family: cursive;
+    border: solid gold;
+}
+.card-img-top{
+    height: 300px;
+    object-fit:contain;
+
+}
+.portfolio-item {
+    margin-bottom: 30px;
+}
+
+.pagination {
+    margin-bottom: 30px;
+}
