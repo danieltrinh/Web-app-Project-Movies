@@ -3,15 +3,25 @@ package model.FromAPI;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.Arrays;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Movie {
     private int id;
     private String original_title;
-    private int[] genre_ids;
+    private List<Genre> genres;
     private String backdrop_path;
     private String overview;
     private String release_date;
+    private String poster_path;
+
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
 
     public int getId() {
         return id;
@@ -29,12 +39,12 @@ public class Movie {
         this.original_title = original_title;
     }
 
-    public int[] getGenre_ids() {
-        return genre_ids;
+    public List<Genre> getGenres() {
+        return genres;
     }
 
-    public void setGenre_ids(int[] genre_ids) {
-        this.genre_ids = genre_ids;
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
     }
 
     public String getBackdrop_path() {
@@ -66,7 +76,7 @@ public class Movie {
         return "Movie{" +
                 "id=" + id +
                 ", original_title='" + original_title + '\'' +
-                ", genre_ids=" + Arrays.toString(genre_ids) +
+                ", genres=" + genres +
                 ", backdrop_path='" + backdrop_path + '\'' +
                 ", overview='" + overview + '\'' +
                 ", release_date='" + release_date + '\'' +

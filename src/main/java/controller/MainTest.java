@@ -5,6 +5,8 @@ import Util.JacksonHelper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.FromAPI.Cast;
 import model.FromAPI.Credit;
+import model.FromAPI.Movie;
+import model.FromAPI.Similar;
 
 import java.util.List;
 
@@ -16,15 +18,18 @@ public class MainTest {
 
         String id = "348350";
 
-        String dataFromAPI = APIInfo.getApiData(APIInfo.getMovieCastPath(id));
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
+        String dataFromAPI = APIInfo.getApiData(APIInfo.getSimilarMoviePath(id));
+        System.out.println(APIInfo.getSimilarMoviePath(id));
 //        String castData = APIInfo.getNodeFromJson(dataFromAPI,"cast");
 
-        Credit credit = (Credit) JacksonHelper.mapToCorrespondingObject(dataFromAPI, Credit.class);
+//        Credit credit = (Credit) JacksonHelper.mapToCorrespondingObject(dataFromAPI, Credit.class);
+//
+//        List<Cast> casts = credit.getCast();
 
-        List<Cast> casts = credit.getCast();
-        System.out.println(casts);
+        Similar similar = (Similar) JacksonHelper.mapToCorrespondingObject(dataFromAPI, Similar.class);
+
+        List<Movie> similar_movies = similar.getResults();
+
+        System.out.println(similar_movies);
     }
 }

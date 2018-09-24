@@ -72,8 +72,8 @@ public class APIInfo {
     public static String getMovieCastPath(String id) {
         return apiBaseUrl + "movie/" + id + "/credits" + "?api_key=" + apiKey;
     }
-//
-//    public static String getSimilarMoviePath(){
-//
-//    }
+
+    public static String getSimilarMoviePath(String id){
+        return apiBaseUrl+ "movie/" + id + "/similar?api_key=" + apiKey;
+    }
 }

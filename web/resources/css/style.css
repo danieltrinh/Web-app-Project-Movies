@@ -13,3 +13,84 @@ body {
         padding-top: 56px;
     }
 }
+
+#movieInput{
+
+    border: thin blue solid;
+    width: 400px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-size: 20px;
+
+}
+
+#searchButton{
+    background-color: lightskyblue;
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 20px;
+}
+
+#searchBar{
+    text-align: center;
+}
+
+#moviePic{
+    width: 650px;
+    height: 650px;
+    object-fit: contain;
+}
+
+.movie_description{
+    /*font-weight: 500;*/
+    /*font-size: 25px;*/
+    /*font-family: fantasy;*/
+    margin-left: inherit;
+
+}
+
+#cast0img,#cast1img,#cast2img{
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+}
+
+#cast0Name,#cast1Name,#cast2Name{
+    font-size: 20px;
+}
+
+#cast0Title,#cast1Title,#cast2Title{
+    font-size: 15px;
+}
+
+.title{
+    color:coral ;
+    font-size: 35px;
+    color: coral;
+    font-weight: 900;
+    width: max-content
+}
+
+.similar_name {
+    text-align: center;
+    font-size: 25px;
+    font-family: fantasy;
+    font-weight: bold;
+}
+
+#movieDescription
+{
+    font-size: large;
+    font-weight: normal;
+}
+
+body > .container
+{
+    margin-top: 30px;
+}
+
+.home_main_movie_banner
+{
+    width: 100%;
+}

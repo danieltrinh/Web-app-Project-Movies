@@ -13,37 +13,6 @@
 
 <jsp:include page="header.jsp"/>
 
-
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Start Bootstrap</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/login.jsp">Login</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 <%! String poster_prefix = "https://image.tmdb.org/t/p/w500/"; %>
 <!-- Page Content -->
 <div class="container">
@@ -51,7 +20,7 @@
   <!-- Heading Row -->
   <div class="row my-4">
     <div class="col-lg-8">
-      <img class="img-fluid rounded" src="<%= poster_prefix %>${mainBannerMovie.backdrop_path}" alt="">
+      <img class="img-fluid rounded home_main_movie_banner" src="<%= poster_prefix %>${mainBannerMovie.backdrop_path}" alt="">
     </div>
     <!-- /.col-lg-8 -->
     <div class="col-lg-4">
@@ -82,10 +51,10 @@
           <div class="card-body">
             <h2 class="card-title"><%= m.getOriginal_title() %></h2>
             <%--<p class="card-text"><%= m.getOverview() %></p>--%>
-              <img class="img-fluid rounded" src="<%= poster_prefix %><%= m.getBackdrop_path() %>" alt="" title="<%= m.getOverview() %>">
+              <img class="img-fluid rounded " src="<%= poster_prefix %><%= m.getBackdrop_path() %>" alt="" title="<%= m.getOverview() %>">
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">More Info</a>
+            <a href="/movie?id=<%= m.getId() %>" class="btn btn-primary" target="_blank">More Detail</a>
           </div>
         </div>
       </div>
