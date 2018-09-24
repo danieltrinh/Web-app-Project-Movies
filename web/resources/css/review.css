@@ -1,0 +1,95 @@
+body {
+    padding-top: 70px;
+}
+.btn-grey{
+    background-color:#D8D8D8;
+    color:#FFF;
+}
+.rating-block{
+    background-color:#FAFAFA;
+    border:1px solid #EFEFEF;
+    padding:15px 15px 20px 15px;
+    border-radius:3px;
+}
+.bold{
+    font-weight:700;
+}
+.padding-bottom-7{
+    padding-bottom:7px;
+}
+
+.review-block{
+    background-color:#FAFAFA;
+    border:1px solid #EFEFEF;
+    padding:15px;
+    border-radius:3px;
+    margin-bottom:15px;
+}
+.review-block-name{
+    font-size:12px;
+    margin:10px 0;
+}
+.review-block-date{
+    font-size:12px;
+}
+.review-block-rate{
+    font-size:13px;
+    margin-bottom:15px;
+}
+.review-block-title{
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+.review-block-description{
+    font-size:13px;
+}
+
+.animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+#new-review{
+    width: 500px;
+}
+.stars
+{
+    margin: 20px 0;
+    font-size: 24px;
+    color: #d17581;
+}
+
+#headlineReview{
+    margin-bottom: 20px;
+}
+
+.rating-star{
+
+    left:0%;
+    right:0%;
+    transform: translate(-75%,0%);
+}
+.rating-star > input { display: none; }
+.rating-star > label:before {
+    margin: 5px;
+    font-size:30px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+.rating-star > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+.rating-star > label {
+    color: #ddd;
+    float: right;
+}
+.rating-star > input:checked ~ label,
+.rating-star:not(:checked) > label:hover,
+.rating-star:not(:checked) > label:hover ~ label { color: #FFD700;  }
+.rating-star > input:checked + label:hover,
+.rating-star > input:checked ~ label:hover,
+.rating-star > label:hover ~ input:checked ~ label,
+.rating-star > input:checked ~ label:hover ~ label { color: #FFED85;  }
