@@ -19,7 +19,8 @@ public class reviewController extends HttpServlet {
         String rating = req.getParameter("rating");
         String movieId = req.getParameter("movieId");
         ReviewDao reviewDb = new ReviewDao();
-        Review newReview = reviewDb.createNewReview(new Review((Integer) (session.getAttribute("User") , movieId, detailReview, headline, Integer.parseInt(rating) ));
+        Review newReview;
+        newReview = reviewDb.createNewReview(new Review(0, (Integer) (session.getAttribute("User")), Integer.parseInt(movieId) , detailReview, headline, Integer.parseInt(rating) ));
         String objectToReturn = "{ key1: '', key2: 'value2' }";
 
     }
