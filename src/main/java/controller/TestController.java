@@ -1,7 +1,7 @@
 package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Movie;
+import model.FromAPI.Movie;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

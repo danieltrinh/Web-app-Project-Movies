@@ -1,3 +1,7 @@
+<%@ page import="model.FromAPI.Movie" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Daniel
@@ -7,34 +11,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+<jsp:include page="header.jsp"/>
 
-<head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>Small Business - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="resources/css/style.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="resources/js/script.js"></script>
-
-</head>
-
-<body>
-
-<form method="post" action="test">
-  <button>Test</button>
-</form>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
@@ -78,7 +57,7 @@
     <div class="col-lg-4">
       <h1>${mainBannerMovie.original_title}</h1>
       <p>${mainBannerMovie.overview}</p>
-      <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+      <a class="btn btn-primary btn-lg" href="/movie?id=${mainBannerMovie.id}">To the Movie</a>
     </div>
     <!-- /.col-md-4 -->
   </div>
@@ -87,63 +66,37 @@
   <!-- Call to Action Well -->
   <div class="card text-white bg-secondary my-4 text-center">
     <div class="card-body">
-      <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+      <p class="text-white m-0">Browse through our newest and hottest Movies</p>
     </div>
   </div>
 
   <!-- Content Row -->
   <div class="row">
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card One</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card Two</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h2 class="card-title">Card Three</h2>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">More Info</a>
-        </div>
-      </div>
-    </div>
-    <!-- /.col-md-4 -->
 
+      <%  ArrayList<Movie> subBannerMovies = (ArrayList<Movie>) request.getAttribute("subBannerMovies");
+        for (Movie m: subBannerMovies)
+        {  %>
+      <div class="col-md-4 mb-4">
+      <%--<c:forEach  items="$(subBannerMovies}" var="Item" >--%>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title"><%= m.getOriginal_title() %></h2>
+            <%--<p class="card-text"><%= m.getOverview() %></p>--%>
+              <img class="img-fluid rounded" src="<%= poster_prefix %><%= m.getBackdrop_path() %>" alt="" title="<%= m.getOverview() %>">
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">More Info</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+      <%--</c:forEach>--%>
+
+    <!-- /.col-md-4 -->
   </div>
   <!-- /.row -->
 
 </div>
 <!-- /.container -->
 
-<!-- Footer -->
-<footer class="py-5 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-  </div>
-  <!-- /.container -->
-</footer>
-
-</body>
-
-</html>
+<jsp:include page="footer.jsp"/>

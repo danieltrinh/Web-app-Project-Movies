@@ -1,20 +1,16 @@
 package controller;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Discover;
-import model.Movie;
+import Util.APIInfo;
+import Util.JacksonHelper;
+import model.FromAPI.Discover;
+import model.FromAPI.Movie;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -23,34 +19,11 @@ import java.util.Random;
 public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            HttpURLConnection conn = null;
-            BufferedReader reader = null;
-            URL url = new URL(APIInfo.apiBaseUrl);
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Accept", "application/json");
 
-            if (conn.getResponseCode() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + conn.getResponseCode());
-            }
+            String jsonFromApi = APIInfo.getApiData(APIInfo.getDiscoverPath());
 
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    (conn.getInputStream())));
+            Discover discover = (Discover)JacksonHelper.mapToCorrespondingObject(jsonFromApi, Discover.class);
 
-            // get return json
-            String output = null;
-            reader = new BufferedReader(new InputStreamReader(conn.getInputStream(),"utf-8"));
-            StringBuilder strBuf = new StringBuilder();
-            while ((output = reader.readLine()) != null)
-                strBuf.append(output);
-//            System.out.println("API return" + strBuf.toString());
-
-            ObjectMapper objectMapper = new ObjectMapper();
-
-            //convert json string to object
-            Discover discover = objectMapper.readValue(strBuf.toString(), Discover.class);
             List<Movie> movies = discover.getResults();
             Movie mainBannerMovie = movies.get(0);
             movies.remove(0);
@@ -58,7 +31,7 @@ public class IndexController extends HttpServlet {
 
             int numberOfElements = 3;
 
-            List<Movie> subBannerMovies = new ArrayList<Movie>();
+            List<Movie> subBannerMovies = new ArrayList<>();
             Random rand = new Random();
             for (int i = 0; i < numberOfElements; i++) {
                 int randomIndex = rand.nextInt(movies.size());
@@ -66,18 +39,16 @@ public class IndexController extends HttpServlet {
                 movies.remove(randomIndex);
             }
 
-            for (Movie m: subBannerMovies)
-                System.out.println(m);
+            for (Movie m : subBannerMovies) {
+                System.out.println(m.getOriginal_title());
+                System.out.println(m.getOverview());
+                System.out.println(m.getBackdrop_path());
+            }
 
-            System.out.println(mainBannerMovie.getOriginal_title());
-
-            conn.disconnect();
             req.setAttribute("mainBannerMovie", mainBannerMovie);
-            req.setAttribute("subBannerMovies", mainBannerMovie);
+            req.setAttribute("subBannerMovies", subBannerMovies);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         req.getRequestDispatcher("index.jsp").forward(req,resp);
     }
 }
