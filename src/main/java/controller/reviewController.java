@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.gson.Gson;
 import dao.ReviewDao;
 import dao.UserDao;
 import model.Review;
@@ -40,8 +39,6 @@ public class reviewController extends HttpServlet {
             newReviewList.add(value);
         }
         session.setAttribute("listReview", newReviewList);
-        String jsonReturn = new Gson().toJson(new ReviewReturn(newReview.getId(),newReview.getUserId(),newReview.getMovieId(), newReview.getDetailReview(),newReview.getShortReview(),newReview.getRate(), userDb.getUserById(newReview.getUserId()).getFullname()));
-        resp.getWriter().print(jsonReturn);
     }
 
     @Override

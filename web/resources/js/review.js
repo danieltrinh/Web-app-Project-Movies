@@ -15,14 +15,8 @@ function newReview() {
         type: "POST",
         url:"review",
         data:{"headline":headline,"newReview":newReview, "rating":rating, "movieId" : movieId},
-        success: function (data) {
-            if (data){
-                // window.location = data;
-                location.reload();
-
-            } else{
-                alert("Username or password is wrong");
-            }
+        complete: function () {
+            location.reload();
         }
     })
 }

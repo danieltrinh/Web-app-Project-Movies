@@ -36,6 +36,9 @@ public class UserDao {
     public User getUserByEmail(String email) {
         return usersDB.get(email);
     }
+    public User getUserById(Integer id) {
+        return usersDB.entrySet().stream().filter(x -> x.getValue().getId() == id).findFirst().get().getValue();
+    }
 
     public User getUser(String email) {
         return usersDB.get(email);
