@@ -63,5 +63,6 @@
     <!-- /.row -->
 
 </div>
-
+<input type="hidden" id="movieId" name="movieId" value="<%= m.getId() %>">
+<jsp:include page="review.jsp"/>
 <jsp:include page="footer.jsp"/>

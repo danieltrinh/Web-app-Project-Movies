@@ -2,12 +2,13 @@ package dao;
 
 import model.User;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class UserDao {
     private Map<String, User> usersDB = new HashMap<>();
     {
-        usersDB.put("son@mum.edu", new User(1,"son@mum.edu","123456", "", "", ""));
-        usersDB.put("yafei@mum.edu", new User(2,"yafei@mum.edu","123456", "", "", ""));
+        usersDB.put("son@mum.edu", new User(1,"son@mum.edu","123456", "Son Trinh", "", ""));
+        usersDB.put("yafei@mum.edu", new User(2,"yafei@mum.edu","123456", "Yafei Geng", "", ""));
     }
 
     public boolean checkExistUser(String email, String password){
@@ -19,6 +20,10 @@ public class UserDao {
     public User getUserByEmail(String email){
         return usersDB.get(email);
     }
+    public User getUserById(Integer id){
+        return  usersDB.entrySet().stream().filter(x -> x.getValue().getId() == id).findFirst().get().getValue();
+    }
+
     public User getUser(String email){
         return usersDB.get(email);
     }

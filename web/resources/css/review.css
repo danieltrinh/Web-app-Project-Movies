@@ -93,3 +93,4 @@ body {
 .rating-star > input:checked ~ label:hover,
 .rating-star > label:hover ~ input:checked ~ label,
 .rating-star > input:checked ~ label:hover ~ label { color: #FFED85;  }
+
