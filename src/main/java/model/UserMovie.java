@@ -1,37 +1,39 @@
 package model;
 
 public class UserMovie {
-  private Integer UserId;
-  private Integer MovieId;
-  private Integer Status;
+    private Integer movieId;
+    private Integer status;
 
-    public Integer getUserId() {
-        return UserId;
-    }
-
-    public void setUserId(Integer userId) {
-        UserId = userId;
-    }
+    public static final int WILL_WATCH = 0;
+    public static final int WATCHED = 0;
 
     public Integer getMovieId() {
-        return MovieId;
+        return movieId;
     }
 
     public void setMovieId(Integer movieId) {
-        MovieId = movieId;
+        this.movieId = movieId;
     }
 
     public Integer getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(Integer status) {
-        Status = status;
+        this.status = status;
     }
 
-    public UserMovie(Integer userId, Integer movieId, Integer status) {
-        UserId = userId;
-        MovieId = movieId;
-        Status = status;
+    public UserMovie(Integer movieId, Integer status) {
+        this.movieId = movieId;
+        this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "UserMovie{" +
+                "movieId=" + movieId +
+                ", status=" + status +
+                '}';
+    }
+
 }

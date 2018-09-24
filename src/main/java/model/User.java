@@ -1,5 +1,10 @@
 package model;
 
+import model.FromAPI.Movie;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private int id;
     private String email;
@@ -7,6 +12,7 @@ public class User {
     private String fullname;
     private String telephone;
     private String address;
+    private List<UserMovie> personalList;
 
     public User() {
 
@@ -25,6 +31,16 @@ public class User {
         this.fullname = fullname;
         this.telephone = telephone;
         this.address = address;
+    }
+
+    public User(int id, String email, String password, String fullname, String telephone, String address, List<UserMovie> personalList) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.fullname = fullname;
+        this.telephone = telephone;
+        this.address = address;
+        this.personalList = personalList;
     }
 
     public String getPassword() {
@@ -74,4 +90,33 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
+    public List<UserMovie> getPersonalList() {
+        return personalList;
+    }
+
+    public void setPersonalList(List<UserMovie> personalList) {
+        this.personalList = personalList;
+    }
+
+    public static List<UserMovie> getWillWatchList(List<UserMovie> personalList)
+    {
+        List<UserMovie> result = new ArrayList<>();
+        for(UserMovie um : personalList)
+            if(um.getStatus() == UserMovie.WILL_WATCH)
+                result.add(um);
+        return result;
+    }
+
+    public static List<UserMovie> getWatchedList(List<UserMovie> personalList)
+    {
+        List<UserMovie> result = new ArrayList<>();
+        for(UserMovie um : personalList)
+            if(um.getStatus() == UserMovie.WATCHED)
+                result.add(um);
+        return result;
+    }
+
+
+
 }

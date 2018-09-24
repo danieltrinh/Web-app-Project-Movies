@@ -19,26 +19,23 @@ public class loginController extends HttpServlet {
         String pass = req.getParameter("password");
         String remember = req.getParameter("remember");
 
-
-
         UserDao userDb = new UserDao();
 
-        if (userDb.checkExistUser(user, pass)){
-            if (remember != null)
-            {
+        if (userDb.checkExistUser(user, pass)) {
+            if (remember != null) {
                 Cookie cookie = new Cookie("user", user);
-                cookie.setMaxAge(30*24*60*60); //in seconds
+                cookie.setMaxAge(30 * 24 * 60 * 60); //in seconds
                 resp.addCookie(cookie);
-            } else{
+            } else {
                 Cookie cookie = new Cookie("user", user);
                 cookie.setMaxAge(0); //in seconds
                 resp.addCookie(cookie);
             }
             session.setAttribute("user", user);
             session.setAttribute("userId", userDb.getUser(user).getId());
-            String urlToRedirect = "dashboard.jsp";
+            session.setAttribute("personalList", userDb.getUser(user).getPersonalList());
+            String urlToRedirect = "dashboard";
             resp.getWriter().write(urlToRedirect);
-            //resp.sendRedirect("dashboard.jsp");
         } else {
             session.setAttribute("message", "Username or password is wrong");
 
