@@ -49,9 +49,10 @@
       <%--<c:forEach  items="$(subBannerMovies}" var="Item" >--%>
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title"><%= m.getOriginal_title() %></h2>
             <%--<p class="card-text"><%= m.getOverview() %></p>--%>
-              <img class="img-fluid rounded " src="<%= poster_prefix %><%= m.getBackdrop_path() %>" alt="" title="<%= m.getOverview() %>">
+              <%--<h2 class="card-title"><%= m.getOriginal_title() %></h2>--%>
+              <img class="img-fluid rounded sub_movie_poster" src="<%= poster_prefix %><%= m.getPoster_path() %>" alt="" title="<%= m.getOverview() %>">
+              <p class="card-text"><%= m.getOverview() %>"></p>
           </div>
           <div class="card-footer">
             <a href="/movie?id=<%= m.getId() %>" class="btn btn-primary" target="_blank">More Detail</a>

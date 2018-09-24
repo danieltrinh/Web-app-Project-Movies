@@ -3,7 +3,13 @@ $(function () {
         let movieValue = $("#movieInput").val();
         console.log(movieValue);
         getInfo(movieValue);
-    })
+    });
+    $('.card-text').ellipsis({
+        lines: 3,
+        ellipClass: 'ellip',
+        responsive: true
+    });
+
 })
 
 function getInfo(movieValue){
@@ -18,6 +24,12 @@ function getMovieInfo(movieValue){
             // showMoveTitle(data);
             // showMoveText(data);
             renderSearchResult(data);
+
+            $('.portfolio-item .card-text').ellipsis({
+                lines: 4,
+                ellipClass: 'ellip',
+                responsive: true
+            });
         },
 
         error:function(){
@@ -50,6 +62,7 @@ function renderSearchResult(data)
 {
     let imgPrefix = "https://image.tmdb.org/t/p/w500/";
     var target = $("#searchResult");
+    target.empty();
     var html = "";
     for(let i=0;i<data.results.length;i++) {
 
