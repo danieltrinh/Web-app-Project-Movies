@@ -1,5 +1,6 @@
 package controller;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Discover;
 import model.Movie;
