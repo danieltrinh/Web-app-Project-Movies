@@ -24,9 +24,7 @@ public class registerController extends HttpServlet {
         if (userDb.addUser(user,pass,fullName,telephone,address)){
             session.setAttribute("user", user);
             resp.getWriter().write("dashboard.jsp");
-
         }
-
 
     }
 }

@@ -2,7 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.FromAPI.Genre" %>
 <%@ page import="model.FromAPI.Movie" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="model.UserMovie" %><%--
   Created by IntelliJ IDEA.
   User: Daniel
   Date: 9/24/2018
@@ -22,6 +23,8 @@
 
         <div class="col-md-4 movie_description">
             <h1 class="my-3 movieTitle title"> ${movie.original_title} <h1>
+            <strong>
+            </strong>
             <p id="movieDescription">${movie.overview}</p>
             <h3 class="my-3 movieGenre title">Genre</h3>
             <ul>

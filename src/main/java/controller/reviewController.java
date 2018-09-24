@@ -22,6 +22,5 @@ public class reviewController extends HttpServlet {
         Review newReview;
         newReview = reviewDb.createNewReview(new Review(0, (Integer) (session.getAttribute("User")), Integer.parseInt(movieId) , detailReview, headline, Integer.parseInt(rating) ));
         String objectToReturn = "{ key1: '', key2: 'value2' }";
-
     }
 }

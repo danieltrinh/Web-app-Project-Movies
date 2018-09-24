@@ -53,7 +53,11 @@
                     <a class="nav-link" href="/search">Search</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login.jsp">Login</a>
+                    <% if(session.getAttribute("user") == null){ %>
+                        <a class="nav-link" href="/login.jsp">Login</a>
+                    <% } else { %>
+                        <a class="nav-link" href="/dashboard">Dashboard</a>
+                    <% } %>
                 </li>
             </ul>
         </div>
