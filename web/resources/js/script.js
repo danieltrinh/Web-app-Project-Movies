@@ -12,6 +12,8 @@ $(function () {
     });
     
     $("#watchlist").click(function (e) {
+        var watchList_btn = $(this);
+        var movie_title = $(".movieTitle.title").text().trim();
        if($(this).hasClass("added"))
        {
 
@@ -23,9 +25,10 @@ $(function () {
                },
                type : "POST",
                success : function (data) {
-                   console.log(data);
-                   $(this).html("Add to WatchList <i class=\"fa fa-check-circle-o\" aria-hidden=\"true\"></i>");
-                   $(this).removeClass("added").addClass("not_added");
+                   console.log("removed, " + data);
+                   watchList_btn.html("Add to WatchList <i class=\"fa fa-check-circle-o\" aria-hidden=\"true\"></i>");
+                   watchList_btn.removeClass("added").addClass("not_added");
+                   alert("removed \"" + movie_title + "\" from your watchlist")
                }
            });
        }
@@ -38,9 +41,10 @@ $(function () {
                },
                type : "POST",
                success : function (data) {
-                   console.log(data);
-                   $(this).html("Added WatchList <i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i>");
-                   $(this).removeClass("not_added").addClass("added");
+                   console.log("added, " + data);
+                   watchList_btn.html("Added WatchList <i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i>");
+                   watchList_btn.removeClass("not_added").addClass("added");
+                   alert("added \"" + movie_title + "\" to your watchlist")
                }
            });
        }

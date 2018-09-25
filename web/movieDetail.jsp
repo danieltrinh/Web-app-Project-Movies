@@ -25,18 +25,18 @@
             <h1 class="my-3 movieTitle title"> ${movie.original_title}
             </h1>
             <p>
-                    <% Integer watchList = (Integer) request.getAttribute("watchList"); %>
-                    <% if (watchList != null) { %>
-                        <div id="watchlist"
-                            <% if (watchList == 1) {%>
-                             class="added">
-                                Added WatchList <i class="fa fa-check-circle" aria-hidden="true"></i>
-                            <% } else {%>
-                            class="not_added">
-                                Add to WatchList <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            <% } %>
-                        </div>
-                    <% } %>
+                <% Integer watchList = (Integer) request.getAttribute("watchList"); %>
+                <% if (watchList != null) { %>
+                    <div id="watchlist"
+                        <% if (watchList == 1) {%>
+                         class="added">
+                            Added WatchList <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <% } else {%>
+                        class="not_added">
+                            Add to WatchList <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        <% } %>
+                    </div>
+                <% } %>
             </p>
 
             <p id="movieDescription">${movie.overview}</p>

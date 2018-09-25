@@ -8,22 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/css/dashboard.css">
 
-<!------ Include the above in your HEAD tag ---------->
-<html>
-<head>
-    <title>Welcome </title>
-</head>
-<body>
+<jsp:include page="header.jsp"/>
 
-<%= session.getAttribute("personalList")  %>
-
-<%= request.getAttribute("watchedList")  %>
-<%= request.getAttribute("willWatchList")  %>
 <% User user = (User) request.getAttribute("userInfo"); %>
 
 <div class="container emp-profile">
@@ -81,5 +68,4 @@
         </div>
     </form>
 </div>
-</body>
-</html>
+<jsp:include page="footer.jsp"/>
