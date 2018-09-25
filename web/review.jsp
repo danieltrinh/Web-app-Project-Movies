@@ -13,36 +13,15 @@
 <%@ page import="java.util.stream.Collectors" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<%--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--%>
 <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <!------ Include the above in your HEAD tag ---------->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-
-    <title>Fixed Top Navbar Example for Bootstrap</title>
     <script src="resources/js/review.js"></script>
 
 
     <link href="resources/css/review.css" rel="stylesheet">
-
-
-
-    <![endif]-->
-</head>
-
-<body>
 
 <!-- Fixed navbar -->
 <%List<ReviewReturn> reviewReturnsList = (ArrayList<ReviewReturn>) request.getAttribute("listReview");%>
@@ -145,12 +124,12 @@ reviewReturnsList = reviewReturnsList.stream().filter(x -> x.getMovieId() == m.g
                         <div class="review-block-rate">
                             <% for(int i = 0; i < r.getRate(); i++) { %>
                             <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <i class="fa fa-star" aria-hidden="true"></i>
                             </button>
                             <% } %>
                             <% for(int i = 0; i < 5 - r.getRate(); i++) { %>
                             <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <i class="fa fa-star" aria-hidden="true"></i>
                             </button>
                             <% } %>
 
@@ -194,7 +173,3 @@ reviewReturnsList = reviewReturnsList.stream().filter(x -> x.getMovieId() == m.g
         </div>
     </div>
 </div> <!-- /container -->
-
-
-</body>
-</html>
