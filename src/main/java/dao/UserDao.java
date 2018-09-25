@@ -10,13 +10,11 @@ public class UserDao {
     private Map<String, User> usersDB = new HashMap<>();
 
     {
-        List<Integer> sonList = Arrays.asList(
-                348350,270691,10304,57286
-        );
+        ArrayList<Integer> sonList = new ArrayList<>();
+        sonList.addAll(Arrays.asList(348350,270691,10304,57286));
 
-        List<Integer> yafeiList = Arrays.asList(
-                180358,14843,37607
-        );
+        ArrayList<Integer> yafeiList = new ArrayList<>();
+        yafeiList.addAll(Arrays.asList(180358,14843,37607));
 
         usersDB.put("son@mum.edu", new User(1, "son@mum.edu", "123456", "Son Trinh", "123213123", "MUM", sonList));
         usersDB.put("yafei@mum.edu", new User(2, "yafei@mum.edu", "123456", "", "", "", yafeiList));

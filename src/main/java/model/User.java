@@ -12,7 +12,7 @@ public class User {
     private String fullname;
     private String telephone;
     private String address;
-    private List<Integer> watchListIds;
+    private ArrayList<Integer> watchListIds;
 
     public User() {
 
@@ -33,7 +33,7 @@ public class User {
         this.address = address;
     }
 
-    public User(int id, String email, String password, String fullname, String telephone, String address, List<Integer> watchListIds) {
+    public User(int id, String email, String password, String fullname, String telephone, String address, ArrayList<Integer> watchListIds) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -92,11 +92,11 @@ public class User {
         this.id = id;
     }
 
-    public List<Integer> getWatchListIds() {
+    public ArrayList<Integer> getWatchListIds() {
         return watchListIds;
     }
 
-    public void setWatchListIds(List<Integer> watchListIds) {
+    public void setWatchListIds(ArrayList<Integer> watchListIds) {
         this.watchListIds = watchListIds;
     }
 }
