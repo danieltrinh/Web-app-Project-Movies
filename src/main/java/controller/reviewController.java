@@ -32,8 +32,10 @@ public class reviewController extends HttpServlet {
         if (session.getAttribute("listReview") != null) {
             currentReviewList = (List<Review>) session.getAttribute("listReview");
             currentReviewList.add(newReview);
-        } else
+        } else {
             currentReviewList = reviewDb.getReviewByMovie(Integer.parseInt(movieId));
+            currentReviewList.add(newReview);
+        }
         for (Review item: currentReviewList) {
             ReviewReturn value = new ReviewReturn(item.getId(),item.getUserId(),item.getMovieId(), item.getDetailReview(),item.getShortReview(),item.getRate(), userDb.getUserById(item.getUserId()).getFullname());
             newReviewList.add(value);

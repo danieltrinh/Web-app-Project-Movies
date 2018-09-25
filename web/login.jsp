@@ -53,7 +53,7 @@
                                 </div>
 
                             </form>
-                            <form id="register-form" action="https://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                            <form id="register-form" action="" method="post" role="form" style="display: none;">
                                 <div class="form-group">
                                     <input type="text" name="usernameReg" id="usernameReg" tabindex="1" class="form-control" placeholder="Email" value="">
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                            <input type="button" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
                                         </div>
                                     </div>
                                 </div>

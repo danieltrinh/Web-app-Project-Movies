@@ -86,5 +86,4 @@
 <c:if test = "${user != null}">
     <jsp:include page="review.jsp"/>
 </c:if>
-
 <jsp:include page="footer.jsp"/>

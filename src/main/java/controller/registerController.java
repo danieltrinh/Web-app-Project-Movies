@@ -1,5 +1,6 @@
 package controller;
 
+import Util.EmailHelper;
 import dao.UserDao;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,9 @@ public class registerController extends HttpServlet {
         String address = req.getParameter("address");
         String fullName = req.getParameter("fullName");
         String telephone = req.getParameter("telephone");
-
+        if (!EmailHelper.isValid(user)){
+            throw new IllegalArgumentException("Invalid Email");
+        }
         UserDao userDb = new UserDao();
         if (userDb.addUser(user,pass,fullName,telephone,address)){
             session.setAttribute("user", user);

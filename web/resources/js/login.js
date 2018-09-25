@@ -53,11 +53,12 @@ function register() {
         url:"register",
         data:{"username":user,"password":pwd, "address":address,"fullName" : fullname, "telephone": telephone},
         success: function (data) {
-            if (data){
+          
                 window.location = data;
-            } else{
-                alert("Register fail,check your information again");
-            }
+
+        },
+        fail: function () {
+            alert("Register fail,check your information again");
         }
     })
 }
