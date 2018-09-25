@@ -1,5 +1,6 @@
 package controller;
 
+import dao.UserDao;
 import model.User;
 import model.UserMovie;
 
@@ -19,6 +20,8 @@ public class DashboardController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         List<Integer> watchListIds = (List<Integer>) session.getAttribute("watchListIds");
+        UserDao userDb = new UserDao();
+        req.setAttribute("userInfo", userDb.getUser((String) session.getAttribute("user")));
         req.setAttribute("watchListIds",watchListIds);
         req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
     }
