@@ -83,6 +83,8 @@
 
 </div>
 <input type="hidden" id="movieId" name="movieId" value="<%= m.getId() %>">
-<%--<jsp:include page="review.jsp"/>--%>
+<c:if test = "${user != null}">
+    <jsp:include page="review.jsp"/>
+</c:if>
 
 <jsp:include page="footer.jsp"/>
