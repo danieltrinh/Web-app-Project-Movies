@@ -53,12 +53,13 @@ function register() {
         url:"register",
         data:{"username":user,"password":pwd, "address":address,"fullName" : fullname, "telephone": telephone},
         success: function (data) {
-          
+
                 window.location = data;
 
         },
-        fail: function () {
-            alert("Register fail,check your information again");
+        error: function (xhr, status, exception) {
+            console.log(exception);
+            alert("You information to register is wrong, please input again");
         }
     })
 }
