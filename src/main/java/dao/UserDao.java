@@ -18,7 +18,7 @@ public class UserDao {
                 180358,14843,37607
         );
 
-        usersDB.put("son@mum.edu", new User(1, "son@mum.edu", "123456", "", "", "", sonList));
+        usersDB.put("son@mum.edu", new User(1, "son@mum.edu", "123456", "Son Trinh", "123213123", "MUM", sonList));
         usersDB.put("yafei@mum.edu", new User(2, "yafei@mum.edu", "123456", "", "", "", yafeiList));
     }
 
