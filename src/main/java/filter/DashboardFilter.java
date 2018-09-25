@@ -19,7 +19,7 @@ public class DashboardFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession(false);
         String homepageURI = request.getContextPath() + "/";
-        boolean rightUserDashboard = session != null && session.getAttribute("userId") == servletRequest.getAttribute("UserId");
+        boolean rightUserDashboard = session != null && session.getAttribute("userId") != null;
 
         if (rightUserDashboard) {
             filterChain.doFilter(request, response);
