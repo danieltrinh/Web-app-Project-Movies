@@ -159,11 +159,11 @@ reviewReturnsList = reviewReturnsList.stream().filter(x -> x.getMovieId() == m.g
                     </fieldset>
                 </div>
                 <div>
-                    <input id="headlineReview" name="headlineReview" type="text" size="100" placeholder="Input your headline review">
+                    <input id="headlineReview" name="headlineReview" type="text" style="width: 500px" placeholder="Input your headline review">
                     </br>
                 </div>
                 <input id="ratings-hidden" name="rating" type="hidden">
-                <textarea class="form-control animated" cols="20" id="new-review" name="new-review" placeholder="Enter your review here..." rows="7"></textarea>
+                <textarea class="form-control animated" cols="20" id="new-review" name="new-review" placeholder="Enter your review here..." rows="10"></textarea>
 
                 <div class="text-left">
 
