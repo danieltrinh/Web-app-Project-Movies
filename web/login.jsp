@@ -35,7 +35,7 @@
                         <div class="col-lg-12">
                             <form id="login-form" action="/login" method="post" role="form" style="display: block;">
                                 <div class="form-group">
-                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="${user}">
+                                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="${cookie.user.value}">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" >
