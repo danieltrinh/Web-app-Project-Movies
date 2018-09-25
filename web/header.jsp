@@ -73,8 +73,16 @@
                     <a class="nav-link" href="/login.jsp">Login</a>
                     <% } else { %>
                     <a class="nav-link" href="/dashboard">Dashboard</a>
+
                     <% } %>
                 </li>
+                <% if(session.getAttribute("user") != null){ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <% }%>
+
+
             </ul>
         </div>
     </div>
