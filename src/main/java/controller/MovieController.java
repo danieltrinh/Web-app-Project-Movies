@@ -57,13 +57,18 @@ public class MovieController extends HttpServlet {
             }
         }
 
-        List<Integer> watchListIds = (List<Integer>) session.getAttribute("watchListIds");
+        if(session.getAttribute("user")!=null)
+        {
+            List<Integer> watchListIds = (List<Integer>) session.getAttribute("watchListIds");
 
-        if(watchListIds != null)
-            if(watchListIds.contains(Integer.parseInt(id)))
-            {
-                req.setAttribute("watchList", 1);
-            }
+            if(watchListIds != null)
+                if(watchListIds.contains(Integer.parseInt(id)))
+                    req.setAttribute("watchList", 1);
+                else
+                    req.setAttribute("watchList", 0);
+        }
+
+        session.setAttribute("page_title", movie.getOriginal_title());
 
         req.setAttribute("listReview", returnList);
         req.setAttribute("movie", movie);

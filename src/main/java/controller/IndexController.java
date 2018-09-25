@@ -21,37 +21,37 @@ public class IndexController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            String jsonFromApi = APIInfo.getApiData(APIInfo.getDiscoverPath());
+        String jsonFromApi = APIInfo.getApiData(APIInfo.getDiscoverPath());
 
-            Discover discover = (Discover)JacksonHelper.mapToCorrespondingObject(jsonFromApi, Discover.class);
+        Discover discover = (Discover) JacksonHelper.mapToCorrespondingObject(jsonFromApi, Discover.class);
 
-            List<Movie> movies = discover.getResults();
-            Movie mainBannerMovie = movies.get(0);
-            movies.remove(0);
-            System.out.println(mainBannerMovie);
+        List<Movie> movies = discover.getResults();
+        Movie mainBannerMovie = movies.get(0);
+        movies.remove(0);
+        System.out.println(mainBannerMovie);
 
-            int numberOfElements = 3;
+        int numberOfElements = 3;
 
-            List<Movie> subBannerMovies = new ArrayList<>();
-            Random rand = new Random();
-            for (int i = 0; i < numberOfElements; i++) {
-                int randomIndex = rand.nextInt(movies.size());
-                subBannerMovies.add(movies.get(randomIndex)) ;
-                movies.remove(randomIndex);
-            }
+        List<Movie> subBannerMovies = new ArrayList<>();
+        Random rand = new Random();
+        for (int i = 0; i < numberOfElements; i++) {
+            int randomIndex = rand.nextInt(movies.size());
+            subBannerMovies.add(movies.get(randomIndex));
+            movies.remove(randomIndex);
+        }
 
-            for (Movie m : subBannerMovies) {
-                System.out.println(m.getOriginal_title());
-                System.out.println(m.getOverview());
-                System.out.println(m.getBackdrop_path());
-            }
+        for (Movie m : subBannerMovies) {
+            System.out.println(m.getOriginal_title());
+            System.out.println(m.getOverview());
+            System.out.println(m.getBackdrop_path());
+        }
 
-            req.setAttribute("mainBannerMovie", mainBannerMovie);
-            req.setAttribute("subBannerMovies", subBannerMovies);
-
+        req.setAttribute("mainBannerMovie", mainBannerMovie);
+        req.setAttribute("subBannerMovies", subBannerMovies);
         HttpSession session = req.getSession();
+        session.setAttribute("page_title", "Homepage");
         System.out.println(session.getAttribute("user"));
 
-        req.getRequestDispatcher("index.jsp").forward(req,resp);
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }
