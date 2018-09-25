@@ -14,12 +14,35 @@ $(function () {
     $("#watchlist").click(function (e) {
        if($(this).hasClass("added"))
        {
-           $(this).html("Add to WatchList <i class=\"fa fa-check-circle-o\" aria-hidden=\"true\"></i>");
-           $(this).removeClass("added").addClass("not_added");
+
+           $.ajax({
+               url : "/watchlist",
+               data :  {
+                   movieId : $("#movieId").val(),
+                   add: false
+               },
+               type : "POST",
+               success : function (data) {
+                   console.log(data);
+                   $(this).html("Add to WatchList <i class=\"fa fa-check-circle-o\" aria-hidden=\"true\"></i>");
+                   $(this).removeClass("added").addClass("not_added");
+               }
+           });
        }
        else {
-           $(this).html("Added WatchList <i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i>");
-           $(this).removeClass("not_added").addClass("added");
+           $.ajax({
+               url : "/watchlist",
+               data :  {
+                   movieId : $("#movieId").val(),
+                   add: true
+               },
+               type : "POST",
+               success : function (data) {
+                   console.log(data);
+                   $(this).html("Added WatchList <i class=\"fa fa-check-circle\" aria-hidden=\"true\"></i>");
+                   $(this).removeClass("not_added").addClass("added");
+               }
+           });
        }
     });
 })

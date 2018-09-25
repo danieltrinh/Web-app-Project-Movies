@@ -23,6 +23,8 @@ public class DashboardController extends HttpServlet {
         UserDao userDb = new UserDao();
         req.setAttribute("userInfo", userDb.getUser((String) session.getAttribute("user")));
         req.setAttribute("watchListIds",watchListIds);
+
+        session.setAttribute("page_title", "Dashboard");
         req.getRequestDispatcher("dashboard.jsp").forward(req,resp);
     }
 }

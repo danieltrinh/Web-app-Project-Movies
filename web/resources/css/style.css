@@ -95,13 +95,13 @@ body > .container
 }
 
 #searchBar{
-    text-align: right;
+    text-align: left;
     margin-bottom: 5px;
 
 }
 
 #searchButton{
-    width: 100px;
+    width: 120px;
     height: 50px;
     font-size: 28px;
     font-family: cursive;
