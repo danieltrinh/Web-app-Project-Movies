@@ -11,7 +11,7 @@ public class UserDao {
 
     {
         ArrayList<Integer> sonList = new ArrayList<>();
-        sonList.addAll(Arrays.asList(348350,270691,10304,57286));
+        sonList.addAll(Arrays.asList(348350,13475,2164,10679));
 
         ArrayList<Integer> yafeiList = new ArrayList<>();
         yafeiList.addAll(Arrays.asList(180358,14843,37607));

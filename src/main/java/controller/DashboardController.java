@@ -1,6 +1,9 @@
 package controller;
 
+import Util.APIInfo;
+import Util.JacksonHelper;
 import dao.UserDao;
+import model.FromAPI.Movie;
 import model.User;
 import model.UserMovie;
 
@@ -22,7 +25,18 @@ public class DashboardController extends HttpServlet {
         List<Integer> watchListIds = (List<Integer>) session.getAttribute("watchListIds");
         UserDao userDb = new UserDao();
         req.setAttribute("userInfo", userDb.getUser((String) session.getAttribute("user")));
-        req.setAttribute("watchListIds",watchListIds);
+
+        List<Movie> watchlist = new ArrayList<>();
+
+        for(Integer id : watchListIds)
+        {
+            String jsonMovieData = APIInfo.getApiData(APIInfo.getMoviePath(id.toString()));
+            Movie movie = (Movie) JacksonHelper.mapToCorrespondingObject(jsonMovieData,Movie.class);
+            watchlist.add(movie);
+        }
+
+        req.setAttribute("watchlist",watchlist);
+        System.out.println(watchlist);
 
         session.setAttribute("page_title", "Dashboard");
         req.getRequestDispatcher("dashboard.jsp").forward(req,resp);

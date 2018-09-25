@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="model.User" %>
 <%@ page import="model.UserMovie" %>
 <%@ page import="java.util.List" %><%--
@@ -67,5 +68,30 @@
             </div>
         </div>
     </form>
+
+
+</div>
+
+<div class="container emp-profile">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>
+                    Your WatchList
+                </h5>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px;">
+        <c:forEach items="${watchlist}" var="w_mov">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="/movie?id=${w_mov.id}">
+                    <img id="simlar${similar_mov.id}" class="img-fluid" src="https://image.tmdb.org/t/p/w500/${w_mov.poster_path}" alt="">
+                </a>
+                <p id="name${similar_mov.id}" class="similar_name">${w_mov.original_title}</p>
+            </div>
+        </c:forEach>
+    </div>
 </div>
 <jsp:include page="footer.jsp"/>

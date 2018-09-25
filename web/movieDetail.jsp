@@ -73,9 +73,9 @@
             <div class="col-md-3 col-sm-6 mb-4">
                 <a href="/movie?id=${similar_mov.id}">
                     <img id="simlar1" class="img-fluid" src="https://image.tmdb.org/t/p/w500/${similar_mov.poster_path}"
-                         alt="" title="E${similar_mov.overview}" dataid="26390">
+                         alt="" title="${similar_mov.overview}" dataid="26390">
                 </a>
-                <p id="name1" class="similar_name">${similar_mov.original_title}</p>
+                <p id="name${similar_mov.id}" class="similar_name">${similar_mov.original_title}</p>
             </div>
         </c:forEach>
     </div>

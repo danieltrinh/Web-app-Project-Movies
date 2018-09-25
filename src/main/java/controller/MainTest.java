@@ -18,41 +18,21 @@ public class MainTest {
     private static final String apiBaseUrl = "https://api.themoviedb.org/3/discover/movie?api_key=132df4c1e5f3c8f5022c2e5a94fedce4";
 
     public static void main(String args[]) {
-
-//        String id = "348350";
-
-//        String dataFromAPI = APIInfo.getApiData(APIInfo.getSimilarMoviePath(id));
-//        System.out.println(APIInfo.getSimilarMoviePath(id));
-//        String castData = APIInfo.getNodeFromJson(dataFromAPI,"cast");
-
-//        Credit credit = (Credit) JacksonHelper.mapToCorrespondingObject(dataFromAPI, Credit.class);
-//
-//        List<Cast> casts = credit.getCast();
-
-//        Similar similar = (Similar) JacksonHelper.mapToCorrespondingObject(dataFromAPI, Similar.class);
-
-//        List<Movie> similar_movies = similar.getResults();
-
-//        System.out.println(similar_movies);
-
-        Integer id =270691;
-        boolean add = false;
         UserDao userDb = new UserDao();
         ArrayList<Integer> watchListIds = userDb.getUser("son@mum.edu").getWatchListIds();
-        if(add)
-            watchListIds.add(id);
-        else
-            watchListIds.remove(id);
 
-//        session.setAttribute("watchListIds", watchListIds);
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            String returnedJSon = mapper.writeValueAsString(watchListIds);
-            System.out.println(returnedJSon);
-        }catch (Exception e)
+        List<Movie> watchlist = new ArrayList<>();
+
+        for(Integer id : watchListIds)
         {
-            e.printStackTrace();
+            String jsonMovieData = APIInfo.getApiData(APIInfo.getMoviePath(id.toString()));
+            Movie movie = (Movie) JacksonHelper.mapToCorrespondingObject(jsonMovieData,Movie.class);
+            watchlist.add(movie);
         }
-//        resp.getWriter().println(returnedJSon);
+
+        System.out.println(watchlist);
+        // movie data
+
+
     }
 }
