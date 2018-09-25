@@ -23,26 +23,29 @@
 
         <div class="col-md-4 movie_description">
             <h1 class="my-3 movieTitle title"> ${movie.original_title}
-                </h1>
-                    <p><strong>
-                        <% Integer watchList = (Integer) request.getAttribute("watchList"); %>
-                        <% if (watchList != null) {
-                            if (watchList == 1) {
-                        %>
-                            In WatchList
-                        <% } else {%>
-                            Add to WatchList
-                        <% }
-                        }  %></strong>
-                    </p>
+            </h1>
+            <p>
+                    <% Integer watchList = (Integer) request.getAttribute("watchList"); %>
+                    <% if (watchList != null) { %>
+                        <div id="watchlist"
+                            <% if (watchList == 1) {%>
+                             class="added">
+                                Added WatchList <i class="fa fa-check-circle" aria-hidden="true"></i>
+                            <% } else {%>
+                            class="not_added">
+                                Add to WatchList <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                            <% } %>
+                        </div>
+                    <% } %>
+            </p>
 
-                    <p id="movieDescription">${movie.overview}</p>
-                    <h3 class="my-3 movieGenre title">Genre</h3>
-                    <ul>
-                        <c:forEach items="${movie.genres}" var="genre">
-                            <li class="genre" data-genre-id="${genre.id}"> ${genre.name} </li>
-                        </c:forEach>
-                    </ul>
+            <p id="movieDescription">${movie.overview}</p>
+            <h3 class="my-3 movieGenre title">Genre</h3>
+            <ul>
+                <c:forEach items="${movie.genres}" var="genre">
+                    <li class="genre" data-genre-id="${genre.id}"> ${genre.name} </li>
+                </c:forEach>
+            </ul>
         </div>
 
     </div>
